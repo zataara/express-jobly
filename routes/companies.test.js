@@ -110,6 +110,9 @@ describe("GET /companies", function () {
 
 /************************************** GET /companies/:handle */
 
+describe
+
+
 describe("GET /companies/:handle", function () {
   test("works for anon", async function () {
     const resp = await request(app).get(`/companies/c1`);
