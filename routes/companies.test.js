@@ -110,7 +110,12 @@ describe("GET /companies", function () {
 
 /************************************** GET /companies/:handle */
 
-describe
+describe("GET /", function() {
+  test("it validates valid data", async function() {
+    const resp = await request(app).get(`/`);
+    expect(res.body).toEqual
+  }
+)})
 
 
 describe("GET /companies/:handle", function () {
