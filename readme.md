@@ -1,8 +1,4 @@
 # Jobly
-
-[![wakatime](https://wakatime.com/badge/user/99e71179-209a-409a-b8bc-6612891d9ce9/project/0aff2cc8-7008-4738-bade-6245480b52a8.svg)](https://wakatime.com/badge/user/99e71179-209a-409a-b8bc-6612891d9ce9/project/0aff2cc8-7008-4738-bade-6245480b52a8) <img src='https://img.shields.io/github/last-commit/zataara/jobly'>
-
-
 Jobly is a web app that allows users to research companies and apply for jobs.
 
 To run this:
