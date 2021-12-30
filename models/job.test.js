@@ -1,7 +1,7 @@
-"use strict"
+"use strict";
 
 const { NotFoundError, BadRequestError } = require("../expressError");
-const db  = require("../db.js");
+const db = require("../db.js");
 const Job = require("./job.js");
 const {
   commonBeforeAll,
@@ -9,14 +9,14 @@ const {
   commonAfterEach,
   commonAfterAll,
   testJobIds,
-} = require("./_testCommon")
+} = require("./_testCommon");
 
 beforeAll(commonBeforeAll);
 beforeEach(commonBeforeEach);
 afterEach(commonAfterEach);
 afterAll(commonAfterAll);
 
-/******** CREATE */
+/************************************** create */
 
 describe("create", function () {
   let newJob = {
@@ -26,7 +26,7 @@ describe("create", function () {
     equity: "0.1",
   };
 
-  test("works", async function() {
+  test("works", async function () {
     let job = await Job.create(newJob);
     expect(job).toEqual({
       ...newJob,

@@ -22,7 +22,7 @@ const router = new express.Router();
  *
  * Returns { handle, name, description, numEmployees, logoUrl }
  *
- * Authorization required: login
+ * Authorization required: admin
  */
 
 router.post("/", ensureAdmin, async function (req, res, next) {
@@ -52,17 +52,16 @@ router.post("/", ensureAdmin, async function (req, res, next) {
  */
 
 router.get("/", async function (req, res, next) {
-  const q = request.query;
-
-  // change query string to integers
-  if(q.minEmployees !== undefined) q.minEmployees = +q.minEmployees;
-  if(q.maxEmployees !== undefined) q.maxEmployees = +q.maxEmployees;
+  const q = req.query;
+  // arrive as strings from querystring, but we want as ints
+  if (q.minEmployees !== undefined) q.minEmployees = +q.minEmployees;
+  if (q.maxEmployees !== undefined) q.maxEmployees = +q.maxEmployees;
 
   try {
     const validator = jsonschema.validate(q, companySearchSchema);
-    if(!validator.valid) {
+    if (!validator.valid) {
       const errs = validator.errors.map(e => e.stack);
-      throw new BadRequestError(errs)
+      throw new BadRequestError(errs);
     }
 
     const companies = await Company.findAll(q);
@@ -97,7 +96,7 @@ router.get("/:handle", async function (req, res, next) {
  *
  * Returns { handle, name, description, numEmployees, logo_url }
  *
- * Authorization required: login
+ * Authorization required: admin
  */
 
 router.patch("/:handle", ensureAdmin, async function (req, res, next) {
@@ -117,7 +116,7 @@ router.patch("/:handle", ensureAdmin, async function (req, res, next) {
 
 /** DELETE /[handle]  =>  { deleted: handle }
  *
- * Authorization: login
+ * Authorization: admin
  */
 
 router.delete("/:handle", ensureAdmin, async function (req, res, next) {
